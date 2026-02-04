@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💘</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff4e8b, #ff85a2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  animation: float 3s ease-in-out infinite;
+  max-width: 360px;
+  position: relative;
+}
+
+h1 {
+  color: #ff4e8b;
+}
+
+p {
+  color: #444;
+  font-size: 18px;
+}
+
+button {
+  padding: 12px 25px;
+  margin: 12px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+  position: relative;
+}
+
+.yes {
+  background: #ff4e8b;
+  color: white;
+}
+
+.no {
+  background: #ddd;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.heart {
+  position: absolute;
+  font-size: 22px;
+  animation: fall 6s linear infinite;
+  color: rgba(255,255,255,0.8);
+}
+
+@keyframes fall {
+  0% { transform: translateY(-10vh); }
+  100% { transform: translateY(110vh); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎶 Romantic Song -->
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/4WlJkY9G2j8?autoplay=1&loop=1&playlist=4WlJkY9G2j8"
+allow="autoplay">
+</iframe>
+
+<div class="card">
+  <h1>Siluvile Langa 💕</h1>
+  <p>You are my calm, my joy, my love.</p>
+  <p><strong>Will you be my Valentine? 💘</strong></p>
+
+  <button class="yes" onclick="yesAnswer()">Yes 💖</button>
+  <button class="no" id="noBtn">No 🙈</button>
+</div>
+
+<script>
+function yesAnswer() {
+  document.body.innerHTML = `
+    <div style="
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      background:#ff4e8b;
+      color:white;
+      font-family:'Segoe UI';
+      text-align:center;">
+      <div>
+        <h1>YESSSS 😍💍</h1>
+        <p>You just made my heart so full 💖</p>
+      </div>
+    </div>
+  `;
+}
+
+// 🏃‍♂️ No button runs away
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 200 - 100;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+// ❤️ Falling hearts
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
